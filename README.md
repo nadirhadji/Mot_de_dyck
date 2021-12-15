@@ -86,7 +86,7 @@ remise, vous pouvez supprimer ce paragraphe).
 * [ ] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
   (Pénalité de **50%**).
 * [ ] Le dépôt GitLab est un *fork* de [ce
-  dépôt](https://gitlab.info.uqam.ca/dogny_g/tp1-inf3135-a21)
+  dépôt](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1)
   (Pénalité de **50%**).
 * [ ] Le dépôt GitLab est privé (Pénalité de **50%**).
 * [ ] Le dépôt contient au moins un fichier `.gitignore`.
