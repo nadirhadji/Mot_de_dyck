@@ -350,7 +350,7 @@ déclarations suivantes (n'oubliez pas de les documenter):
 #define TAILLE_MOT 40
 #define USAGE "\
 Usage: %s [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>\n\
-\n\          
+\n\
 Draws on an ASCII path of dycks word. The dycks word is provided on stdin and\n\
 the result is printed on stdout. The length of the word must not exceed 40 characters.\n\
 \n\
@@ -360,10 +360,10 @@ Program parameters :\n\
   HEIGHT                    Optional parameter to calculate the height of the\n\
                             path under the word of dyck.\n\
   AREA                      Optional parameter to calculate the height of\n\
-                            the path under the word of dyck.\n\                        
+                            the path under the word of dyck.\n\
   LETTER 1, LETTER 2        Define the alphabet of the word.\n\
-  WORD                      Word of dyck to draw.\n\                                            
-"
+  WORD                      Word of dyck to draw.\n\
+  "
 
 struct motDeDyck {
     char mot[TAILLE_MOT];   //Le mot saisi
