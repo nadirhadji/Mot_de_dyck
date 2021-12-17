@@ -520,7 +520,7 @@ de **50%** sera imposée :
   `https://gitlab.info.uqam.ca/<utilisateur>/inf3135-hiv2022-tp1` où
   `<utilisateur>` doit être remplacé par votre identifiant
 - L'utilisateur `dogny_g` doit avoir accès à votre projet en mode *Developer*.
-- Votre dépôt doit être un *fork* du [gabarit fourni](https://gitlab.info.uqam.ca/dogny_g/tp1-inf3135-a21).
+- Votre dépôt doit être un *fork* du [gabarit fourni](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1).
 - Votre dépôt doit être **privé**.
 - Il est interdit d'utiliser les fonctions `getopt` et `getopt_long` des
   bibliothèques `unistd.h` et `getopt.h`.
@@ -528,4 +528,4 @@ de **50%** sera imposée :
 
 ## Remise
 
-Le travail est automatiquement remis à la date de remise prévue. Vous n'avez rien de plus à faire. Assurez-vous d’avoir votre travail disponible sur votre branche `master` qui sera considérée pour la correction. Tous les commits après le **10 octobre  2021 à 23:59** ne seront pas considérés pour la correction.
+Le travail est automatiquement remis à la date de remise prévue. Vous n'avez rien de plus à faire. Assurez-vous d’avoir votre travail disponible sur votre branche `master/main` qui sera considérée pour la correction. Tous les commits après le **6 février 2022 à 23:55** ne seront pas considérés pour la correction.
