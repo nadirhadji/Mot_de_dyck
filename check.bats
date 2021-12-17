@@ -1,36 +1,28 @@
 tests_folder=tests
 prog=motdedyck
-usage="Usage: ./motdedyck <lettre 1> <lettre 2> <mot sur les deux lettres>"
+help_first_line="Usage: ./motdedyck <lettre 1> <lettre 2> <mot sur les deux lettres>"
 
 # Normal usage
 
-@test "Sans aucune entree, afficher l'aide" {
+@test "test0 : Sans aucune entree, afficher aide" {
     skip
     run ./$prog
     [ "$status" -eq 0 ]
-    [ "${lines[0]}" = "$usage" ]
+    [ "${lines[0]}" = "$help_first_line" ]
 }
 
-@test "test1 : Dessiner dyck regulier" {
+@test "test1 : Dessiner dyck ab" {
     skip
     run ./$prog < $tests_folder/test1
     [ "${lines[0]}" = "****/\/\****" ]
     [ "${lines[1]}" = "*/\/****\/\*" ]
-    [ "${lines[2]}" = "/**********\" ]
 }
 
-@test "test2 : Dessiner dyck regulier" {
+@test "test2 : Dessiner dyck 01" {
     skip
     run ./$prog < $tests_folder/test2
     [ "${lines[0]}" = "****/\/\****" ]
     [ "${lines[1]}" = "*/\/****\/\*" ]
-    [ "${lines[2]}" = "/**********\" ]
-}
-
-@test "test3 : mot non equilibre" {
-    skip
-    run ./$prog < $tests_folder/test3
-    [ "${lines[0]}" = "mot non equilibre" ]
 }
 
 @test "test4 : mot trop long" {
@@ -75,4 +67,10 @@ usage="Usage: ./motdedyck <lettre 1> <lettre 2> <mot sur les deux lettres>"
     skip
     run ./$prog < $tests_folder/test10
     [ "${lines[0]}" = "donnees invalides" ]
+}
+
+@test "test3 : mot non equilibre" {
+    skip
+    run ./$prog < $tests_folder/test3
+    [ "${lines[0]}" = "mot non equilibre" ]
 }
