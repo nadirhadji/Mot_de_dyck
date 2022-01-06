@@ -78,13 +78,14 @@ Indiquez toutes les tâches qui ont été complétés en insérant un `X` entre 
 crochets. Si une tâche n'a pas été complétée, expliquez pourquoi (lors de la
 remise, vous pouvez supprimer ce paragraphe).
 
-* [ ] Le nom du dépôt GitLab est exactement `inf3135-hiv2022-tp1` (Pénalité de
+* [ ] Le nom du dépôt GitLab est exactement `h22-inf3135-tp1` (Pénalité de
   **50%**).
 * [ ] L'URL du dépôt GitLab est exactement (remplacer `utilisateur` par votre
-  nom identifiant GitLab) `https://gitlab.info.uqam.ca/utilisateur/inf3135-hiv2022-tp1`
+  nom identifiant GitLab) `https://gitlab.info.uqam.ca/utilisateur/h22-inf3135-tp1`
   (Pénalité de **50%**).
 * [ ] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
   (Pénalité de **50%**).
+* [ ] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
 * [ ] Le dépôt GitLab est un *fork* de [ce
   dépôt](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1)
   (Pénalité de **50%**).
