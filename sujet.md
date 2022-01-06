@@ -1,5 +1,7 @@
 # Travail pratique 1: Chemin de Dyck
 
+**Lisez bien le sujet jusqu'au bout avant de commencer à travailler sur le projet.**
+
 
 ## Objectifs pédagogiques
 
@@ -466,6 +468,29 @@ correction finale. Si vous avez un doute sur le comportement attendu d'une
 certaine situation, je vous invite à me poser des questions pour que je puisse
 apporter des précisions à l'ensemble de la classe si nécessaire.
 
+### Pénalités
+
+Tout programme qui ne compile pas se verra automatiquement attribuer
+**la note 0**.
+
+En outre, si vous ne respectez pas les critères suivants, une pénalité
+de **50%** sera imposée :
+
+- Votre dépôt doit se nommer **exactement** `inf3135-hiv2022-tp1`
+- L'URL de votre dépôt doit être **exactement**
+  `https://gitlab.info.uqam.ca/<utilisateur>/inf3135-hiv2022-tp1` où
+  `<utilisateur>` doit être remplacé par votre identifiant
+- L'utilisateur `dogny_g` doit avoir accès à votre projet en mode *Developer*.
+- Votre dépôt doit être un *fork* du [gabarit fourni](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1).
+- Votre dépôt doit être **privé**.
+- Il est interdit d'utiliser les fonctions `getopt` et `getopt_long` des
+  bibliothèques `unistd.h` et `getopt.h`.
+- Il est interdit d'utiliser l'**allocation dynamique** dans ce travail (fonctions `malloc`, `calloc`, `realloc`, `free`).
+
+## Remise
+
+Le travail est automatiquement remis à la date de remise prévue. Vous n'avez rien de plus à faire. Assurez-vous d’avoir votre travail disponible sur votre branche `master/main` qui sera considérée pour la correction. Tous les commits après le **6 février 2022 à 23:55** ne seront pas considérés pour la correction.
+
 ### Barème
 
 Les critères d'évaluation sont les suivants:
@@ -507,25 +532,8 @@ Plus précisément, les éléments suivants seront pris en compte:
   *commit* sont significatifs, uniformes et suivent une des conventions
   suggérées.
 
-### Pénalités
+---
 
-Tout programme qui ne compile pas se verra automatiquement attribuer
-**la note 0**.
+Si vous êtes arrivé à ce stade du document, c'est que vous l'avez lu en entier, comme demandé dans la consigne au tout début du sujet. Envoyez en message privé au professeur sur mattermost une photo d'un animal mignon (p.-ex. une loutre, un chaton, un chiot, un capybara) pour en témoigner. Les cinq (5) premiers étudiants à remplir cette condition bénéficieront de cinq (5) points bonus sur l'évaluation de ce projet (la note maximale reste de 100). 
 
-En outre, si vous ne respectez pas les critères suivants, une pénalité
-de **50%** sera imposée :
-
-- Votre dépôt doit se nommer **exactement** `inf3135-hiv2022-tp1`
-- L'URL de votre dépôt doit être **exactement**
-  `https://gitlab.info.uqam.ca/<utilisateur>/inf3135-hiv2022-tp1` où
-  `<utilisateur>` doit être remplacé par votre identifiant
-- L'utilisateur `dogny_g` doit avoir accès à votre projet en mode *Developer*.
-- Votre dépôt doit être un *fork* du [gabarit fourni](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1).
-- Votre dépôt doit être **privé**.
-- Il est interdit d'utiliser les fonctions `getopt` et `getopt_long` des
-  bibliothèques `unistd.h` et `getopt.h`.
-- Il est interdit d'utiliser l'**allocation dynamique** dans ce travail (fonctions `malloc`, `calloc`, `realloc`, `free`).
-
-## Remise
-
-Le travail est automatiquement remis à la date de remise prévue. Vous n'avez rien de plus à faire. Assurez-vous d’avoir votre travail disponible sur votre branche `master/main` qui sera considérée pour la correction. Tous les commits après le **6 février 2022 à 23:55** ne seront pas considérés pour la correction.
+---
