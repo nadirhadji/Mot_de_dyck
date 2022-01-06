@@ -476,9 +476,9 @@ Tout programme qui ne compile pas se verra automatiquement attribuer
 En outre, si vous ne respectez pas les critères suivants, une pénalité
 de **50%** sera imposée :
 
-- Votre dépôt doit se nommer **exactement** `inf3135-hiv2022-tp1`
+- Votre dépôt doit se nommer **exactement** `h22-inf3135-tp1`
 - L'URL de votre dépôt doit être **exactement**
-  `https://gitlab.info.uqam.ca/<utilisateur>/inf3135-hiv2022-tp1` où
+  `https://gitlab.info.uqam.ca/<utilisateur>/h22-inf3135-tp1` où
   `<utilisateur>` doit être remplacé par votre identifiant
 - L'utilisateur `dogny_g` doit avoir accès à votre projet en mode *Developer*.
 - Votre dépôt doit être un *fork* du [gabarit fourni](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1).
