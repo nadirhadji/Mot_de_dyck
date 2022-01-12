@@ -336,8 +336,8 @@ Afin de compléter ce travail pratique, vous devrez suivre les étapes suivantes
 
 Vous devez cloner le dépôt fourni et l'héberger sur la plateforme [Gitlab du
 département](https://gitlab.info.uqam.ca/). Votre dépôt devra se nommer
-**exactement** `inf3135-hiv2022-tp1` et l'URL devra être **exactement**
-`https://gitlab.info.uqam.ca/<utilisateur>/inf3135-hiv2022-tp1`, où
+**exactement** `h22-inf3135-tp1` et l'URL devra être **exactement**
+`https://gitlab.info.uqam.ca/<utilisateur>/h22-inf3135-tp1`, où
 `<utilisateur>` doit être remplacé par votre code MS de l'UQAM ou par votre nom
 d'utilisateur. Il devra être **privé** et accessible seulement par vous et par
 l'utilisateur `dogny_g`.
