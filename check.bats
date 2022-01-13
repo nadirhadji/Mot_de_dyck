@@ -1,6 +1,6 @@
 tests_folder=tests
 prog=motdedyck
-help_first_line="Usage: ./motdedyck <lettre 1> <lettre 2> <mot sur les deux lettres>"
+help_first_line="Usage: ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>"
 
 # Normal usage
 
