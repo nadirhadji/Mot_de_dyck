@@ -25,6 +25,12 @@ help_first_line="Usage: ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>"
     [ "${lines[1]}" = "*/\/****\/\*" ]
 }
 
+@test "test3 : mot non equilibre" {
+    skip
+    run ./$prog < $tests_folder/test3
+    [ "${lines[0]}" = "mot non equilibre" ]
+}
+
 @test "test4 : mot trop long" {
     skip
     run ./$prog < $tests_folder/test4
@@ -45,21 +51,21 @@ help_first_line="Usage: ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>"
 
 @test "test7 : parametre hauteur" {
     skip
-    run ./$prog -s < $tests_folder/test7
+    run ./$prog hauteur < $tests_folder/test7
     [ "$status" -eq 0 ]
     [ "$output" = "2" ]
 }
 
 @test "test8 : parametre aire" {
     skip
-    run ./$prog -s < $tests_folder/test8
+    run ./$prog aire < $tests_folder/test8
     [ "$status" -eq 0 ]
     [ "$output" = "12" ]
 }
 
 @test "test9 : argument invalide" {
     skip
-    run ./$prog < $tests_folder/test9
+    run ./$prog banane < $tests_folder/test9
     [ "${lines[0]}" = "argument invalide" ]
 }
 
@@ -67,10 +73,4 @@ help_first_line="Usage: ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>"
     skip
     run ./$prog < $tests_folder/test10
     [ "${lines[0]}" = "donnees invalides" ]
-}
-
-@test "test3 : mot non equilibre" {
-    skip
-    run ./$prog < $tests_folder/test3
-    [ "${lines[0]}" = "mot non equilibre" ]
 }
