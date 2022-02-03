@@ -4,6 +4,11 @@
 
 #define MAX_TAILLE 100
 #define TAILLE_MOT 40
+#define RETOUR_CHARIOT_ASCII 10
+#define FIN_DE_TEXT_ASCII 3
+#define ETOILE 42
+#define SLASH 47
+#define BACK_SLASH 92
 
 #define USAGE "\
 Usage: %s [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>\n\
@@ -80,65 +85,126 @@ void initiliserMotDeDyck(struct motDeDyck *mot, char *entree) {
 
      while ( (token = strtok_r(rest, " ", &rest)) ) {
 
-         if (nbParametre == 0 ) {
+        if (nbParametre == 0 ) 
             verifierLettre(token,mot,haut);
-         }
-
-         else if (nbParametre == 1) {
+        else if (nbParametre == 1) 
             verifierLettre(token,mot,bas);
-         }
-
-         else if (nbParametre == 2) {
-             printf("%s\n", token);
-             strcpy(mot->mot,token);
-        }
-        
-        else {
+        else if (nbParametre == 2) 
+            strcpy(mot->mot,token);
+        else 
             terminerExecution(ERREUR_DONNEES_INVALIDES);
-        }
 
          nbParametre++;
      }
-
 }
 
-int estMotValide(struct motDeDyck *mot, int *hauteur_max) {
+int estMotDeDyck(struct motDeDyck *mot, int *hauteur_max, int *index) {
     char *buffer_mot = mot->mot;
-    int hauteur_courrante = 0;
+    int hauteur_courante = 0;
     int nb_haut = 0;
     int nb_bas = 0;
-    int index = 0;
     
-    while ( index < 40 && *buffer_mot != "\0") {
+    while ( *buffer_mot != RETOUR_CHARIOT_ASCII && *buffer_mot != FIN_DE_TEXT_ASCII) {
+
+        printf("%d \n",*index);
+        printf("mot : %d\n",*buffer_mot);    
 
         if (*buffer_mot == mot->haut ) {
-            hauteur_courrante++;
+            hauteur_courante++;
             nb_haut++;
-            if ( *hauteur_max < hauteur_courrante)
-                *hauteur_max++;
+            printf("Hauteur courante : %d \n",hauteur_courante);
+            printf("nb haut : %d \n",nb_haut);
+            if ( *hauteur_max < hauteur_courante)
+                *hauteur_max = ++*hauteur_max;
         }
         else if (*buffer_mot == mot->bas) {
-            hauteur_courrante--;
-            nb_bas--;
+            hauteur_courante--;
+            nb_bas++;
+            printf("Hauteur courante : %d \n",hauteur_courante);
+            printf("nb bas : %d \n",nb_bas);
         }
         else
             return ERREUR_LETTRE_INTERDITE;
 
-        if (hauteur_courrante < 0)
+        if (hauteur_courante < 0)
             return ERREUR_MOT_NON_EQUILIBRE;
+
+        *index = ++*index;
+        buffer_mot++;
     }
 
-    if (index == 40 && *buffer_mot != "\0")
+    if ( nb_bas != nb_haut)
+        return ERREUR_MOT_NON_EQUILIBRE;
+
+    if (*index == TAILLE_MOT-1 && buffer_mot != "\0")
         return ERREUR_MOT_TROP_LONG;
 
     return OK;
 }
 
-void dessiner(struct motDeDyck *mot, int *hauteur_max) {
-    
+void afficherMatrice(char *matrice, int *hauteur_max) {
+
+    for ( int i = 0 ; i <= 20 ; i++) {
+        printf("%d\n",*matrice);
+        matrice++;
+    }
 }
 
-int main(int argc, char *argv[]) {
+void dessiner(struct motDeDyck *mot, int *hauteur_max, int *taille_mot) {
+
+    char matrice[*hauteur_max][*taille_mot];
+
+    int hauteur_courante = 0;
+    int buffer_hauteur_courante = hauteur_courante;
+
+    char *buffer_mot_courant = mot->mot;
+    char *buffer_mot_precedent;
+
+    for ( int i = 0 ; i < *taille_mot ; i++) {
+        for (int j = 0 ; j <= *hauteur_max ; j++) {
+
+            printf("hauteur courante : %d \n",hauteur_courante);
+
+            if ( j != hauteur_courante) {
+                matrice[i][j] = ETOILE;
+                printf("%c\n",matrice[i][j]);
+            }
+            else {
+
+                if (buffer_mot_precedent == NULL) {
+                    matrice[i][j] = SLASH;
+                }
+
+                else if (*buffer_mot_courant == mot->haut && *buffer_mot_precedent == mot->haut) {
+                    buffer_hauteur_courante++;
+                    matrice[i][j] = SLASH;
+                    printf("%c \n",matrice[i][j]);
+                }
+                else if (*buffer_mot_courant == mot->bas && *buffer_mot_precedent == mot->bas) {
+                    buffer_hauteur_courante--;
+                    matrice[i][j] = BACK_SLASH;
+                    printf("%c \n",matrice[i][j]);
+                }
+                else if (*buffer_mot_courant == mot->bas && *buffer_mot_precedent == mot->haut) {
+                    matrice[i][j] = BACK_SLASH;
+                }
+                else if (*buffer_mot_courant == mot->haut && *buffer_mot_precedent == mot->bas) {
+                    matrice[i][j] = SLASH;
+                }
+            }
+        }
+        printf("%c\n",*buffer_mot_courant);
+        printf("%c\n",*buffer_mot_precedent);
+
+        hauteur_courante = buffer_hauteur_courante;
+        *buffer_mot_precedent = *buffer_mot_courant;
+        buffer_mot_courant = buffer_mot_courant + 1;
+    } 
+
+    afficherMatrice(*matrice, hauteur_max);
+}
+
+ int main(int argc, char *argv[]) {
 
     //Affichage des arguments
     //printf("argc = %d\n", argc);
@@ -146,21 +212,26 @@ int main(int argc, char *argv[]) {
     //    printf("argv[%d] = %s\n", i, argv[i]);
     //}
 
-    //Test Initialisation
-    struct motDeDyck mot;
-    char entree[MAX_TAILLE];
-    fgets(entree,MAX_TAILLE,stdin);
+    //Variable globale 
+    char entree[MAX_TAILLE];    //chaine de caractere brute
+    struct motDeDyck mot;       
     int hauteur_max = 0;
+    int nombre_lettre = 0;
 
+    printf("hauteur max = %d\n",hauteur_max);
+    printf("taille mot = %d\n",nombre_lettre);
+
+    fgets(entree,MAX_TAILLE,stdin);
     initiliserMotDeDyck(&mot,entree);
-    int status = estMotValide(&mot,&hauteur_max);
-    if ( status != OK )
+    int status = estMotDeDyck(&mot,&hauteur_max,&nombre_lettre);
+    if ( status != OK ) 
         terminerExecution(status);
     else {
-        dessiner(&mot);
+        printf("hauteur max = %d\n",hauteur_max);
+        printf("taille mot = %d\n",nombre_lettre);
+        dessiner(&mot,&hauteur_max,&nombre_lettre);
     }
 
-    printf("%d \n",index);    
     printf("Haut : %c\n",mot.haut);
     printf("Bas : %c\n",mot.bas);
     printf("Mot : %s\n",mot.mot);
@@ -171,4 +242,3 @@ int main(int argc, char *argv[]) {
 void afficherUsage() {
     printf("%s",USAGE);
 }
-
