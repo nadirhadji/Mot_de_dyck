@@ -1,7 +1,7 @@
 exec = motdedyck
 readme = README
 CC = gcc
-CFLAGS = -std=c11
+CFLAGS = -Wall -Wextra -std=c99
 
 $(exec): $(exec).o
 	$(CC) $(CFLAGS) -o $(exec) $(exec).o  
@@ -10,7 +10,7 @@ $(exec).o: $(exec).c
 	$(CC) $(CFLAGS) -c $(exec).c 
 
 .PHONY:
-	clean 
+	clean html
 
 test: $(exec)
 	bats check.bats
