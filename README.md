@@ -125,7 +125,7 @@ Les dépendances de projets sont :
 
 ## Références :sos: ##
 
-Indiquez ici les références que vous avez utilisées pour compléter le projet,
-avec l'hyperlien vers la référence. Pas besoin de mentionner les diapositives
-du cours, mais si vous avez eu recours à un site d'aide, un fragment de code ou
-une discussion sur un forum, mentionnez-le.
+* Utilisation de strtok : https://www.geeksforgeeks.org/strtok-strtok_r-functions-c-examples/
+* Verifier contenue de STDIN : https://stackoverflow.com/questions/47320496/how-to-determine-if-stdin-is-empty
+* Le cour est tres utile!
+
