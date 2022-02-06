@@ -111,6 +111,16 @@ Pour executer les testes automatiques, il est imperatif d'installer Bats sur ca 
 $ sudo apt-get install bats
 ```
 
+Pour lancer les testes , lancer l'une des deux commandes suivantes : 
+
+```sh
+$ make test
+```
+
+```sh
+$ bats check.bats --tap
+```
+
 Tout les testes sont en status 'ok' sauf le #8.
 
 
