@@ -10,14 +10,14 @@ $(exec).o: $(exec).c
 	$(CC) $(CFLAGS) -c $(exec).c 
 
 .PHONY:
-	clean test
+	clean 
+
+test:
+	bats check.bats
 
 clean: 
 	rm -f *.o
 	rm -f $(exec)
-
-test:
-	bats check.bats
 
 html:
 	pandoc -o $(readme).html -sc ./misc/github-pandoc.css $(readme).md --metadata pagetitle=TP1
