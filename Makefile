@@ -1,7 +1,7 @@
 exec = motdedyck
 readme = README
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11
+CFLAGS = -std=c11
 
 $(exec): $(exec).o
 	$(CC) $(CFLAGS) -o $(exec) $(exec).o  
