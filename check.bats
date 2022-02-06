@@ -5,7 +5,7 @@ help_first_line="Usage: ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>"
 # Normal usage
 
 @test "test0 : Sans aucune entree, afficher aide" {
-    run ./$prog
+    ./$prog
     [ "$status" -eq 0 ]
     [ "${lines[0]}" = "$help_first_line" ]
 }
