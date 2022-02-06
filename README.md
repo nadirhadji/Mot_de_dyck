@@ -1,6 +1,5 @@
 # TP1: Chemins de Dyck"
 
-
 ## Format Markdown (supprimer cette section avant la remise)
 
 N'oubliez pas de bien exploiter le format Markdown.

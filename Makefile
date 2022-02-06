@@ -1,5 +1,5 @@
 exec = motdedyck
-readme = readme
+readme = README
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
@@ -10,7 +10,7 @@ $(exec).o: $(exec).c
 	$(CC) $(CFLAGS) -c $(exec).c 
 
 .PHONY:
-	clean html
+	clean test
 
 clean: 
 	rm -f *.o
@@ -20,4 +20,4 @@ test:
 	bats check.bats
 
 html:
-	pandoc -o $(readme).html -sc ./misc/github-pandoc.css $(readme).md
+	pandoc -o $(readme).html -sc ./misc/github-pandoc.css $(readme).md --metadata pagetitle=TP1
