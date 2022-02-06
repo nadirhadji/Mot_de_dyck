@@ -13,7 +13,7 @@ $(exec).o: $(exec).c
 	clean html
 
 test: $(exec)
-	bats check.bats
+	bats check.bats --tap
 
 clean: 
 	rm -f *.o

@@ -10,6 +10,8 @@
 #define ETOILE 42
 #define SLASH 47
 #define BACK_SLASH 92
+#define HAUTEUR "hauteur"
+#define AIRE "aire"
 
 #define USAGE "\
 Usage: %s [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>\n\
@@ -26,7 +28,7 @@ Program parameters :\n\
                             the path under the word of dyck.\n\
   LETTER 1, LETTER 2        Define the alphabet of the word.\n\
   WORD                      Word of dyck to draw.\n\
-  "
+"
 
 struct motDeDyck {
     char mot[TAILLE_MOT];   //Le mot saisi
@@ -206,9 +208,9 @@ void dessiner(struct motDeDyck *mot, int *hauteur_max, int *taille_mot) {
 }
 
 int valider_parametre_optionnel(char *argv[]) {
-    if (strcmp(argv[1],"hauteur") == 0) 
+    if (strcmp(argv[1],HAUTEUR) == 0) 
         return 1;
-    else if (strcmp(argv[1],"aire") == 0) 
+    else if (strcmp(argv[1],AIRE) == 0) 
         return 2;
     else    
         terminer_execution(ERREUR_ARGUMENTS_INVALIDES);

@@ -28,73 +28,160 @@ Bien aérer le contenu du fichier source (`README.md`). Éviter les longues
 lignes dans le fichier Markdown (par exemple, limiter à 80) pour une meilleure
 lisibilité avec un éditeur de texte.
 
-## Description
+## Description :bookmark_tabs: ##
 
-Décrivez ici le projet. Commencez d'abord par une description générale, puis
-donnez ensuite des détails. Indiquez le contexte dans lequel ce travail est
-accompli (cours, sigle, enseignant, université).
+Ce travail est réalisée dans le cardre du cours INF3135 - Construction et maintenance de logiciel 
+donnée a l'UQAM par Mr. Serge Dogny. Le but étant de s'initier au language de **programmation C**,
+au fichier markdown ainsi qu'au bonne pratique de devellopement dans cet environnement.
 
-Aussi, insérer un lien vers le [sujet du travail](sujet.md).
+Le but de ce TP est d'implementer un programme nommée **Mot de Dyck**. Concretement, 
+cela consiste a definir un alphabet binaire a deux caracteres alpha numerique qu'on appelera dans ce 
+document des token. Le premier token ce dit 'haut' et le deuxième 'bas'. Ensuite, l'utilisateur definit une chaine de caracteres ( ou mot ) constitue uniquement de ces deux token. On dit alors que ce mot est defini sur cette alphabet.
 
-## Auteur
+Pour que ce mot soit un **Mot de Dyck**, il doit respecter deux proprietes :
 
-Indiquez ici votre prénom et nom, puis votre code permanent entre parenthèses,
-sans mettre en gras ou en italique.
+  1. il existe autant de token 'haut' que de token 'bas' dans le mot.
+  2. Pour chaque sous mot du mot choisi par l'utilisateur, il existe au minimum autant de token 'haut' que de token bas.
 
-Par exemple,
+Voici un Exemple tirée de l'énoncée du travail
 
-Serge Dogny (ABCD12345678)
+![](misc/figure1.png)
 
-## Fonctionnement
+**Figure 1** – _Représentation graphique (a) du chemin de Dyck décrit par le mot aabaabbb et (b) d’un chemin décrit par le mot aababbba qui n’est pas un mot de Dyck, car le préfixe aababbb viole la condition (ii)_.
 
-Expliquez d'abord en mots comment faire fonctionner le projet (imaginez que la
-personne qui l'utilisera ne connaît pas C, ne connaît pas le projet et souhaite
-seulement saisir une série de commandes pour l'exécuter). En particulier,
-indiquez les commandes qui doivent être entrées pour la compilation et
-l'exécution.
+Ce programme a donc pour but de prendre en entrée les informations relatives au **Mot de Dyck** et verifier grace a un algorithme si celui-ci est valide ou pas. L'utilisateur pourra alors choisir de connaitre la hauteur maximale du mot, l'aire sous la courbe ou par default visualiser la représentation ASCII du mot tel qui suit :
 
-## Tests
+![](misc/figure2.png)
 
-Expliquez ici comment lancer la suite de tests automatiques avec la commande
-`make test`, ainsi que le résultat que vous obtenez.
+**Figure 2** – _Représentation ASCII du mot de Dyck aabaabbb. Hauteur = 3 ; Aire = 12._
 
-## Dépendances
 
-Indiquez les dépendances du projet, avec lien officiel. Il faudrait au moins
-mentionner GCC et [Bats](https://github.com/bats-core/bats-core). Utiliser une
-liste à puces pour donner la liste des dépendances.
+lien vers le [sujet du travail](sujet.md).
+Les photos dans ce documents sont prise de l'énoncé du travail rédigé par Mr. Serge Dogny.
 
-## Références
+## Auteur :pencil2:
+
+Nadir Hadji (HADN08069703)
+
+## Fonctionnement :wrench: ##
+
+Il est préferable d'éxecuter ce projet dans un environnement Unix (Linux ou MacOS :heavy_check_mark:).
+Des alternatives existe tout de meme sur Windows. Vous pouvez utiliser une machine virtuel, l'application Ubuntu ou plus simplement git bash.
+
+Faire fonctionner ce projet en 3 étapes :
+
+0. Telechargement (wget requis)
+1. Compilation (GCC requis)
+2. Execution
+
+### Télechargement ###
+Pour télecharger le projet taper les commandes suivantes :
+
+```sh
+$ wget https://gitlab.info.uqam.ca/hadji.nadir/h22-inf3135-tp1
+$ cd ./h22-inf3135-tp1
+```
+
+Vous vous trouverez dans le repertoire du projet.
+
+### Compilation ###
+Pour compiler le projet taper le commande : 
+
+```sh
+$ make
+```
+
+Ci vous n'avez par le programme GCC installer sur votre machine taper : 
+
+```sh
+$ sudo apt-get install gcc
+```
+
+### Execution ###
+
+Pour afficher le manuel d'utilisation du projet taper la commande suivante apres la compilation:
+
+```sh
+$ ./motdedyck
+```
+
+Vous pouvez ecrire vos entrée en parametres comme suit :
+
+```sh
+$ ./motdedyck a b aabb
+```
+
+```sh
+$ ./motdedyck hauteur a b aabb
+```
+
+```sh
+$ ./motdedyck aire a b aabb
+```
+
+Vous pouvez ecrire vos entrée dans un fichier et rediriger l'entrée standard comme suit : 
+
+```sh
+$ ./motdedyck < monFichier.txt
+```
+
+Finalement vous pouvez specifier des options comme suit : 
+
+```sh
+$ ./motdedyck hauteur < monFichier.txt
+```
+
+## Tests :hammer: ##
+
+Pour executer les testes automatiques, il est imperatif d'installer Bats sur ca machine. Pour cela ci ce n'est pas deja fait, vous pouvez lancer la commande : 
+
+```sh
+$ sudo apt-get install bats
+```
+
+Tout les testes sont en status 'ok' sauf le #8.
+
+
+## Dépendances :books: ##
+
+Les dépendances de projets sont : 
+
+* GCC
+* [Bats] (https://github.com/bats-core/bats-core)
+* string.h (librairie standard)
+* ctype.h (libraire standard)
+
+## Références :sos: ##
 
 Indiquez ici les références que vous avez utilisées pour compléter le projet,
 avec l'hyperlien vers la référence. Pas besoin de mentionner les diapositives
 du cours, mais si vous avez eu recours à un site d'aide, un fragment de code ou
 une discussion sur un forum, mentionnez-le.
 
-## État du projet
+## État du projet :end: ##
 
 Indiquez toutes les tâches qui ont été complétés en insérant un `X` entre les
 crochets. Si une tâche n'a pas été complétée, expliquez pourquoi (lors de la
 remise, vous pouvez supprimer ce paragraphe).
 
-* [ ] Le nom du dépôt GitLab est exactement `h22-inf3135-tp1` (Pénalité de
+* [`X`] Le nom du dépôt GitLab est exactement `h22-inf3135-tp1` (Pénalité de
   **50%**).
-* [ ] L'URL du dépôt GitLab est exactement (remplacer `utilisateur` par votre
+* [`X`] L'URL du dépôt GitLab est exactement (remplacer `utilisateur` par votre
   nom identifiant GitLab) `https://gitlab.info.uqam.ca/utilisateur/h22-inf3135-tp1`
   (Pénalité de **50%**).
-* [ ] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
+* [`X`] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
   (Pénalité de **50%**).
-* [ ] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
-* [ ] Le dépôt GitLab est un *fork* de [ce
+* [`X`] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
+* [`X`] Le dépôt GitLab est un *fork* de [ce
   dépôt](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1)
   (Pénalité de **50%**).
-* [ ] Le dépôt GitLab est privé (Pénalité de **50%**).
-* [ ] Le dépôt contient au moins un fichier `.gitignore`.
-* [ ] Le fichier `Makefile` permet de compiler le projet lorsqu'on entre
+* [`X`] Le dépôt GitLab est privé (Pénalité de **50%**).
+* [`X`] Le dépôt contient au moins un fichier `.gitignore`.
+* [`X`] Le fichier `Makefile` permet de compiler le projet lorsqu'on entre
   `make`. Il supporte les cibles `html`, `test` et `clean`.
-* [ ] Le nombre de tests qui réussissent/échouent avec la `make test` est
+* [`X`] Le nombre de tests qui réussissent/échouent avec la `make test` est
   indiqué quelque part dans le fichier `README.md`.
-* [ ] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
+* [`X`] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
 * [ ] L'en-tête du fichier est documentée.
 * [ ] L'en-tête des déclarations des fonctions est documentée (*docstring*).
-* [ ] Le programme ne contient pas de valeurs magiques.
+* [`X`] Le programme ne contient pas de valeurs magiques.
