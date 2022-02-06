@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
 $(exec): $(exec).o
-	$(CC) -o $(exec) $(exec).o  
+	$(CC) $(CFLAGS) -o $(exec) $(exec).o  
 
 $(exec).o: $(exec).c
 	$(CC) $(CFLAGS) -c $(exec).c 
