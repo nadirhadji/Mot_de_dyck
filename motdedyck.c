@@ -1,3 +1,14 @@
+/**
+ * @file motdedyck.c
+ * @author Nadir Hadji (HADN08069703)
+ * @brief INF3135 - Construction et Maintenance de logiciel
+ * @version 0.1
+ * @date 2022-02-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,6 +56,115 @@ enum error {
     ERREUR_MOT_NON_EQUILIBRE    = 5
 };
 
+/**
+ * @brief Ecrire sur la sortie standard la cause du message d'erreur
+ */
+void afficher_message_erreur(int code);
+
+/**
+ * @brief Affiche l'erreur en appelant afficher_message_erreur(code) et stop 
+ * l'éxecution du programme suite a une erreur. Le code de sortie est -1;
+ */
+int terminer_execution( int codeErreur);
+
+/**
+ * @brief Placer lettre dans le champ haut de la structure motDeDyck;
+ * Passage de motDeDyck par adresse.
+ */
+void haut(char lettre, struct motDeDyck *mot);
+
+/**
+ * @brief Placer lettre dans le champ bas de la structure motDeDyck;
+ * Passage de motDeDyck par adresse.
+ */
+void bas(char lettre, struct motDeDyck *mot);
+
+/**
+ * @brief Verifie si le parametre dans agrv contient un seul caractere.
+ * si oui passage en parametre de la fonction 'haut' ou 'bas' afin de placer
+ * le contenu de lettre dans le champ apropriée de mot.
+ */
+void verifier_lettre( char *lettre, struct motDeDyck *mot, void (*f)(char,struct motDeDyck*) );
+
+/**
+ * @brief Verifie la taille du mot. Si la longeur est plus de 40 interuption avec le 
+ * code d'erreur ERREUR_MOT_TROP_LONG sinon retourne la taille du mot. Cette infomation 
+ * servira au autre méthodes.
+ */
+int verifier_mot (char *chaine, struct motDeDyck *mot);
+
+/**
+ * @brief Lecture dans l'entrée standard et decoupages de la chaine de caracteres pour en tirer 
+ * uniquement les caractères utile sans espace ni tabulation ni retour chariot. Si pas d'erreur,
+ * initialisation du mot de dyck par adresse.
+ */
+int initiliser_mot_de_dyck(struct motDeDyck *mot);
+
+/**
+ * @brief Algorithme qui verifie que les propriété du mot de dyck sont respecté.
+ * Retourne le status de la verification.
+ */
+int est_mot_de_dyck(struct motDeDyck *mot, int *hauteur_max, int *taille_mot);
+
+/**
+ * @brief Lecture du parametre a la position 1 dans agrv et comparaison avec les 
+ * nom d'option supporté.
+ * Retourne 1 pour 'hauteur' et 2 pour 'aire'.
+ * Interruption du programme avec un status -1 si donnée non prévu.
+ */
+int valider_parametre_optionnel(char *argv[]);
+
+/**
+ * @brief Verifie le contenur de l'entrée standard.
+ * Retourne 1 si STDIN est  sinon 0;
+ */
+int entree_standard_vide();
+
+/**
+ * @brief Lectures des parametres dans agrv a partir de argv[2] et initalisation de la struc motDeDyck
+ * si pas d'erreur. 
+ * Retourne la taille du mot si verification ok.
+ */
+int valider_parametres_avec_options(char *argv[], struct motDeDyck *mot);
+
+/**
+ * @brief Lectures des parametres dans agrv a partir de argv[1] et initalisation de la struc motDeDyck
+ * si pas d'erreur. 
+ * Retourne la taille du mot si verification ok.
+*/
+int valider_parametres_sans_options(char *argv[], struct motDeDyck *mot);
+
+/**
+ * @brief Initialisation de la stuct motDeDyck via les parametres de agrv si ils suivent 
+ * le format demandé.
+ * Si argc = 1 , affichage des consignes a suivre.
+ */
+int initialisation_STDIN_vide(int argc, char *argv[], struct motDeDyck *mot, int *option);
+
+/**
+ * @brief Initialisation de la stuct motDeDyck via l'entrée standart si ils suivent 
+ * le format demandé.
+ * Si argc = 1 , affichage des consignes a suivre.
+ */
+int initialisation_via_STDIN(int argc, char *argv[], struct motDeDyck *mot, int *option);
+
+/**
+ * @brief Orchestration des méthodes.
+ */
+void executer(struct motDeDyck *mot, int *option, int *taille_mot);
+
+/**
+ * @brief Dessin de la représentation ASCII du mot de dyck dans une matrice
+ * de taille hauteur_max * taille_mot.
+ */
+void dessiner(struct motDeDyck *mot, int *hauteur_max, int *taille_mot);
+
+/**
+ * @brief Affichage de la matrice
+ */
+void afficher_matrice(char *matrice, int *hauteur_max, int *taille_mot);
+
+
 void afficher_message_erreur(int code) {
     if (code == ERREUR_ARGUMENTS_INVALIDES)
         printf("argument invalide");
@@ -58,9 +178,10 @@ void afficher_message_erreur(int code) {
         printf("mot non equilibre");
 }
 
-void terminer_execution( int codeErreur) {
+int terminer_execution( int codeErreur) {
     afficher_message_erreur(codeErreur);
     exit(-1);
+    return -1;
 }
 
 void haut(char lettre, struct motDeDyck *mot) {
@@ -213,12 +334,11 @@ int valider_parametre_optionnel(char *argv[]) {
     else if (strcmp(argv[1],AIRE) == 0) 
         return 2;
     else    
-        terminer_execution(ERREUR_ARGUMENTS_INVALIDES);
+        return terminer_execution(ERREUR_ARGUMENTS_INVALIDES);
 }
 
 //Retroune la taille du mot si les parametres sont valides
 int valider_parametres_avec_options(char *argv[], struct motDeDyck *mot) {
-        valider_parametre_optionnel(argv);
         verifier_lettre(argv[2],mot,haut);
         verifier_lettre(argv[3],mot,bas);
         return verifier_mot(argv[4],mot);
@@ -254,7 +374,7 @@ int initialisation_STDIN_vide(int argc, char *argv[], struct motDeDyck *mot, int
          return valider_parametres_avec_options(argv,mot);
     }
     else
-        terminer_execution(ERREUR_ARGUMENTS_INVALIDES);
+        return terminer_execution(ERREUR_ARGUMENTS_INVALIDES);
 
 }
 
@@ -268,9 +388,8 @@ int  initialisation_via_STDIN(int argc, char *argv[], struct motDeDyck *mot, int
         *option = valider_parametre_optionnel(argv);
          return initiliser_mot_de_dyck(mot);
     }
-    else {
-        terminer_execution(ERREUR_ARGUMENTS_INVALIDES);
-    }
+    else 
+        return terminer_execution(ERREUR_ARGUMENTS_INVALIDES);
 }
 
 void executer(struct motDeDyck *mot, int *option, int *taille_mot) {
