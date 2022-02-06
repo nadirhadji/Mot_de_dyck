@@ -12,7 +12,7 @@ $(exec).o: $(exec).c
 .PHONY:
 	clean 
 
-test:
+test: $(exec)
 	bats check.bats
 
 clean: 
