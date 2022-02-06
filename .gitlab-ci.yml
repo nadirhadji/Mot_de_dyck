@@ -1,9 +1,7 @@
-image: gcc:7.3.0
-
 stages:
     - build
     - test
-    
+
 before_script:
     - apt-get update -qq
     - git clone https://github.com/bats-core/bats-core.git /tmp/bats
@@ -19,4 +17,4 @@ build:
 test:
     stage: test
     script:
-        - make test
+        - ls && make test
