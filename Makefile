@@ -1,12 +1,14 @@
 exec = motdedyck
+readme = readme
+CFLAGS = -Wall -Wextra -std=c11
 
 $(exec): $(exec).o
-	gcc -o $(exec) $(exec).o 
+	gcc $(CFLAGS) -o $(exec) $(exec).o 
 
 $(exec).o: $(exec).c
-	gcc -c $(exec).c
+	gcc -c $(CFLAGS) $(exec).c 
 
-clear: 
+clean: 
 	rm -f *.o
 	rm -f $(exec)
 
