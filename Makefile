@@ -4,10 +4,13 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
 $(exec): $(exec).o
-	$(CC) -o $(exec) $(exec).o $(CFLAGS) 
+	$(CC) -o $(exec) $(exec).o  
 
 $(exec).o: $(exec).c
-	$(CC) -c $(exec).c 
+	$(CC) $(CFLAGS) -c $(exec).c 
+
+.PHONY:
+	clean html
 
 clean: 
 	rm -f *.o
