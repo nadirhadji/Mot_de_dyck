@@ -101,10 +101,10 @@ int initiliser_mot_de_dyck(struct motDeDyck *mot) {
     fgets(entree,MAX_TAILLE,stdin);     //copie de STDIN dans entree
      
     int nbParametre = 0;
-    char* token;
-    char* reste = entree;
+    char *delimiter = " \t\r\n\v\f";
+    char* token = strtok(entree,delimiter);
 
-     while ((token = strtok_r(reste, " \t\r\n\v\f", &reste))) {
+     while ( token != NULL) {
 
         if (nbParametre == 0 ) 
             verifier_lettre(token,mot,haut);
@@ -116,6 +116,7 @@ int initiliser_mot_de_dyck(struct motDeDyck *mot) {
             terminer_execution(ERREUR_DONNEES_INVALIDES);
 
          nbParametre++;
+         token = strtok(NULL,delimiter);
      }
      return taille;
 }
