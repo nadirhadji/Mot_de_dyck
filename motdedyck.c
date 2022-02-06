@@ -45,15 +45,15 @@ enum error {
 
 void afficher_message_erreur(int code) {
     if (code == ERREUR_ARGUMENTS_INVALIDES)
-        printf("argument invalide\n");
+        printf("argument invalide");
     else if (code == ERREUR_DONNEES_INVALIDES)
-        printf("donnees invalides\n");
+        printf("donnees invalides");
     else if (code == ERREUR_MOT_TROP_LONG)
-        printf("mot trop long\n");
+        printf("mot trop long");
     else if (code == ERREUR_LETTRE_INTERDITE)
-        printf("lettre interdite\n");
+        printf("lettre interdite");
     else if (code == ERREUR_MOT_NON_EQUILIBRE)
-        printf("mot non equilibre\n");
+        printf("mot non equilibre");
 }
 
 void terminer_execution( int codeErreur) {
