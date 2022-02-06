@@ -1,33 +1,5 @@
 # TP1: Chemins de Dyck"
 
-## Format Markdown (supprimer cette section avant la remise)
-
-N'oubliez pas de bien exploiter le format Markdown.
-
-Sauter une ligne pour changer de paragraphe.
-
-Mettre les noms de fichier et bout de code courts entre apostrophes inversés.
-Par exemple, si vous parlez du fichier `Makefile`.
-
-Mettre les longs bouts de code dans des blocs de code (triples apostrophes
-inversés). Par exemple, vous pouvez donner un exemple de commande comme suit:
-
-```sh
-$ make
-$ ls -a
-```
-
-Utiliser des listes à puces ou des énumérations le plus possible (plus agréable
-à lire). Par exemple, pour décrire le contenu du projet:
-
-* `README.md`: ce fichier
-* `Makefile`: permet d'automatiser la compilation
-* etc.
-
-Bien aérer le contenu du fichier source (`README.md`). Éviter les longues
-lignes dans le fichier Markdown (par exemple, limiter à 80) pour une meilleure
-lisibilité avec un éditeur de texte.
-
 ## Description :bookmark_tabs: ##
 
 Ce travail est réalisée dans le cardre du cours INF3135 - Construction et maintenance de logiciel 
@@ -157,31 +129,3 @@ Indiquez ici les références que vous avez utilisées pour compléter le projet
 avec l'hyperlien vers la référence. Pas besoin de mentionner les diapositives
 du cours, mais si vous avez eu recours à un site d'aide, un fragment de code ou
 une discussion sur un forum, mentionnez-le.
-
-## État du projet :end: ##
-
-Indiquez toutes les tâches qui ont été complétés en insérant un `X` entre les
-crochets. Si une tâche n'a pas été complétée, expliquez pourquoi (lors de la
-remise, vous pouvez supprimer ce paragraphe).
-
-* [`X`] Le nom du dépôt GitLab est exactement `h22-inf3135-tp1` (Pénalité de
-  **50%**).
-* [`X`] L'URL du dépôt GitLab est exactement (remplacer `utilisateur` par votre
-  nom identifiant GitLab) `https://gitlab.info.uqam.ca/utilisateur/h22-inf3135-tp1`
-  (Pénalité de **50%**).
-* [`X`] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
-  (Pénalité de **50%**).
-* [`X`] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
-* [`X`] Le dépôt GitLab est un *fork* de [ce
-  dépôt](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1)
-  (Pénalité de **50%**).
-* [`X`] Le dépôt GitLab est privé (Pénalité de **50%**).
-* [`X`] Le dépôt contient au moins un fichier `.gitignore`.
-* [`X`] Le fichier `Makefile` permet de compiler le projet lorsqu'on entre
-  `make`. Il supporte les cibles `html`, `test` et `clean`.
-* [`X`] Le nombre de tests qui réussissent/échouent avec la `make test` est
-  indiqué quelque part dans le fichier `README.md`.
-* [`X`] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
-* [`X`] L'en-tête du fichier est documentée.
-* [ ] L'en-tête des déclarations des fonctions est documentée (*docstring*).
-* [`X`] Le programme ne contient pas de valeurs magiques.
